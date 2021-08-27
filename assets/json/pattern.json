@@ -1,0 +1,47 @@
+﻿{
+    "root": {
+        "name": "Unnamed",
+        "type": "MM-project",
+        "author": ""
+    },
+    "chapter": {
+        "type": "chapter",
+        "name": "New Chapter",
+        "image": "",
+        "description": "",
+        "dialogues": {},
+        "cards": {},
+        "locations": {}
+    },
+    "dialogue": {
+        "type": "dialogue",
+        "name": "New Dialogue",
+        "tellerName": "",
+        "image": "",
+        "text": "",
+        "choices": {}
+    },
+    "card": {
+        "type": "card",
+        "name": "New Card",
+        "image": "",
+        "description": "",
+        "stats": {}
+    },
+    "location": {
+        "type": "location",
+        "name": "New Location",
+        "descrition": "",
+        "choices": {}
+    },
+    "choice": {
+        "title": "New Choice",
+        "action": "",
+        "image": "",
+        "description": ""
+    },
+    "stat": {
+        "name": "New Value",
+        "value": "0"
+    }
+}
