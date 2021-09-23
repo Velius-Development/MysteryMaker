@@ -41,6 +41,13 @@ namespace MysteryMaker
             {
                 connectSFTP();
             }
+
+            // Set/Update JSON edit
+            Directory.CreateDirectory(Path.GetTempPath() + "/MysteryMaker/json-editor/");
+            File.WriteAllText(Path.GetTempPath() + "/MysteryMaker/json-editor/jsoneditor.min.css", Properties.Resources.jsoneditor_css);
+            File.WriteAllText(Path.GetTempPath() + "/MysteryMaker/json-editor/jsoneditor.min.js", Properties.Resources.jsoneditor_js);
+            File.WriteAllBytes(Path.GetTempPath() + "/MysteryMaker/json-editor/icons.svg", Properties.Resources.jsoneditor_icons);
+            File.WriteAllText(Path.GetTempPath() + "/MysteryMaker/json-editor/index.html", Properties.Resources.jsoneditor_index);
         }
 
         public static JObject Json

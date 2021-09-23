@@ -17,7 +17,7 @@ namespace MysteryMaker.Properties {
     /// </summary>
     // Diese Klasse wurde von der StronglyTypedResourceBuilder automatisch generiert
     // -Klasse über ein Tool wie ResGen oder Visual Studio automatisch generiert.
-    // Um einen Member hinzuzufügen oder zu remove, bearbeiten Sie die .ResX-Datei und führen dann ResGen
+    // Um einen Member hinzuzufügen oder zu entfernen, bearbeiten Sie die .ResX-Datei und führen dann ResGen
     // mit der /str-Option erneut aus, oder Sie erstellen Ihr VS-Projekt neu.
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -81,6 +81,74 @@ namespace MysteryMaker.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die .jsoneditor input,.jsoneditor input:not([type]),.jsoneditor input[type=search],.jsoneditor input[type=text],.jsoneditor-modal input,.jsoneditor-modal input:not([type]),.jsoneditor-modal input[type=search],.jsoneditor-modal input[type=text]{height:auto;border:inherit;box-shadow:none;font-size:inherit;box-sizing:inherit;padding:inherit;font-family:inherit;transition:none;line-height:inherit}.jsoneditor input:focus,.jsoneditor input:not([type]):focus,.jsoneditor input[type=search]:focus,.jsoneditor input[type= [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        /// </summary>
+        internal static string jsoneditor_css {
+            get {
+                return ResourceManager.GetString("jsoneditor_css", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
+        /// </summary>
+        internal static byte[] jsoneditor_icons {
+            get {
+                object obj = ResourceManager.GetObject("jsoneditor_icons", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die &lt;!DOCTYPE HTML&gt;
+        ///&lt;html lang=&quot;en&quot;&gt;
+        ///&lt;head&gt;
+        ///    &lt;!-- when using the mode &quot;code&quot;, it&apos;s important to specify charset utf-8 --&gt;
+        ///    &lt;meta charset=&quot;utf-8&quot;&gt;
+        ///
+        ///    &lt;link href=&quot;jsoneditor.min.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+        ///    &lt;script src=&quot;jsoneditor.min.js&quot;&gt;&lt;/script&gt;
+        ///&lt;/head&gt;
+        ///&lt;body&gt;
+        ///    &lt;div id=&quot;jsoneditor&quot; style=&quot;width: 100%; height: 100%;&quot;&gt;&lt;/div&gt;
+        ///
+        ///    &lt;script&gt;
+        ///        // create the editor
+        ///        const container = document.getElementById(&quot;jsoneditor&quot;)
+        ///        const options = {}
+        ///        const e [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        /// </summary>
+        internal static string jsoneditor_index {
+            get {
+                return ResourceManager.GetString("jsoneditor_index", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die /*!
+        /// * jsoneditor.js
+        /// *
+        /// * @brief
+        /// * JSONEditor is a web-based tool to view, edit, format, and validate JSON.
+        /// * It has various modes such as a tree editor, a code editor, and a plain text
+        /// * editor.
+        /// *
+        /// * Supported browsers: Chrome, Firefox, Safari, Opera, Internet Explorer 8+
+        /// *
+        /// * @license
+        /// * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not
+        /// * use this file except in compliance with the License. You may obtain a copy
+        /// * of the License at
+        /// *
+        /// * http://www.apache.o [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        /// </summary>
+        internal static string jsoneditor_js {
+            get {
+                return ResourceManager.GetString("jsoneditor_js", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Logo {
@@ -92,34 +160,29 @@ namespace MysteryMaker.Properties {
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die {
-        ///  &quot;chapter&quot;: {
-        ///    &quot;type&quot;: &quot;mysterium&quot;,
-        ///    &quot;name&quot;: &quot;Neues Mysterium&quot;,
-        ///    &quot;level&quot;: &quot;&quot;,
-        ///    &quot;difficulty&quot;: &quot;&quot;,
-        ///    &quot;image&quot;: &quot;&quot;,
-        ///    &quot;author&quot;: &quot;&quot;,
-        ///    &quot;map&quot;: &quot;&quot;,
-        ///    &quot;description&quot;: &quot;&quot;,
-        ///    &quot;dialogues&quot;: {
-        ///      &quot;name&quot;: &quot;Dialoge&quot;
+        ///    &quot;root&quot;: {
+        ///        &quot;name&quot;: &quot;Unnamed&quot;,
+        ///        &quot;type&quot;: &quot;MM-project&quot;,
+        ///        &quot;author&quot;: &quot;&quot;
         ///    },
-        ///    &quot;cards&quot;: {
-        ///      &quot;name&quot;: &quot;Karten&quot;
+        ///    &quot;chapter&quot;: {
+        ///        &quot;type&quot;: &quot;chapter&quot;,
+        ///        &quot;name&quot;: &quot;New Chapter&quot;,
+        ///        &quot;image&quot;: &quot;&quot;,
+        ///        &quot;description&quot;: &quot;&quot;,
+        ///        &quot;dialogues&quot;: {},
+        ///        &quot;cards&quot;: {},
+        ///        &quot;locations&quot;: {}
         ///    },
-        ///    &quot;locations&quot;: {
-        ///      &quot;name&quot;: &quot;Orte&quot;
-        ///    }
-        ///  },
-        ///  &quot;dialogue&quot;: {
-        ///    &quot;type&quot;: &quot;dialogue&quot;,
-        ///    &quot;name&quot;: &quot;Neuer Dialog&quot;,
-        ///    &quot;tellerName&quot;: &quot;&quot;,
-        ///    &quot;image&quot;: 0,
-        ///    &quot;text&quot;: &quot;&quot;,
-        ///    &quot;choices&quot;: {}
-        ///  },
-        ///  &quot;card&quot; [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        ///    &quot;dialogue&quot;: {
+        ///        &quot;type&quot;: &quot;dialogue&quot;,
+        ///        &quot;name&quot;: &quot;New Dialogue&quot;,
+        ///        &quot;tellerName&quot;: &quot;&quot;,
+        ///        &quot;image&quot;: &quot;&quot;,
+        ///        &quot;text&quot;: &quot;&quot;,
+        ///        &quot;choices&quot;: {}
+        ///    },
+        ///    &quot;card&quot;: {        /// [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
         /// </summary>
         internal static string pattern {
             get {

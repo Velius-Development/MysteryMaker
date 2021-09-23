@@ -21,6 +21,9 @@ namespace MysteryMaker
 
             var token = Globals.Json.SelectToken(path);
 
+            if (token == null)
+                return;
+
             JObject jO = token.ToObject<JObject>();
 
 

@@ -12,12 +12,20 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Ionic.Zip;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
+using NJsonSchema.Validation;
+using NJsonSchema;
+using NJsonSchema.Yaml;
+using Newtonsoft.Json.Converters;
+using System.Dynamic;
+using YamlDotNet.Serialization;
 
 namespace MysteryMaker
 {
     public partial class FormMain : System.Windows.Forms.Form
     {
         public bool isVisible = false;
+
+        public string editedPath = "";
 
         public FormMain()
         {
@@ -49,6 +57,8 @@ namespace MysteryMaker
                 ChangeLog l = new ChangeLog();
                 l.Show();
             }
+
+            webView2.Source = new Uri(Path.GetTempPath() + @"MysteryMaker\json-editor\index.html");
         }
 
         public void open()
@@ -233,6 +243,8 @@ namespace MysteryMaker
 
         public async Task saveRecentFileAsync(bool locally = false)
         {
+            await webView2.ExecuteScriptAsync("getJSON();");
+
             if (Globals.editingCloudFile &! locally)
             {
                 Globals.addToLogs("Save to Cloud...");
@@ -325,9 +337,24 @@ namespace MysteryMaker
 
         private void treeView_Chpters_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            //if (treeView_Chpters.SelectedNode != null)
-                editArea.load(getNodeNamePath(treeView_Chpters.SelectedNode));
-            
+            // GUI
+            editedPath = getNodeNamePath(treeView_Chpters.SelectedNode);
+            editArea.load(editedPath);
+
+            var newJson = Globals.Json.SelectToken(editedPath).ToString();
+
+            // YAML
+            var expConverter = new ExpandoObjectConverter();
+            dynamic deserializedObject = JsonConvert.DeserializeObject<ExpandoObject>(newJson, expConverter);
+
+            var serializer = new YamlDotNet.Serialization.Serializer();
+            string yaml = serializer.Serialize(deserializedObject);
+            fastColoredTextBox1.Text = yaml;
+
+
+            // JSON
+            newJson = newJson.Replace("\"", "\\\"").Replace("\r\n", "");
+            webView2.ExecuteScriptAsync("setJSON(\"" + newJson + "\");");
         }
 
         private string getNodeNamePath(TreeNode node)
@@ -351,11 +378,6 @@ namespace MysteryMaker
             pathList.Reverse();
             var path = String.Join(".", pathList);
             return path;
-        }
-
-        private void toolStripDropDownButton1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void inCloudHochladenToolStripMenuItem_Click(object sender, EventArgs e)
@@ -664,6 +686,49 @@ namespace MysteryMaker
                 {
                     Opacity -= 0.03 + Opacity / 5;
                 }
+            }
+        }
+
+        private void fastColoredTextBox1_TextChanged(object sender, FastColoredTextBoxNS.TextChangedEventArgs e)
+        {
+            if (fastColoredTextBox1.Text.Length == 0)
+                return;
+            var deserializer = new Deserializer();
+            var yamlObject = deserializer.Deserialize<dynamic>(fastColoredTextBox1.Text);
+
+            var js = new JsonSerializer();
+
+            var w = new StringWriter();
+            js.Serialize(w, yamlObject);
+            string jsonText = w.ToString();
+            Globals.Json.SelectToken(editedPath).Replace(JObject.Parse(jsonText));
+        }
+
+        private void webView2_WebMessageReceived(object sender, Microsoft.Web.WebView2.Core.CoreWebView2WebMessageReceivedEventArgs e)
+        {
+            // Gets newest JSON
+            Globals.Json.SelectToken(editedPath).Replace(JObject.Parse(e.TryGetWebMessageAsString()));
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (tabControl1.SelectedIndex)
+            {
+                case 0: // GUI
+                    editArea.load(editedPath);
+                    return;
+                case 1: // YAML
+                    var expConverter = new ExpandoObjectConverter();
+                    dynamic deserializedObject = JsonConvert.DeserializeObject<ExpandoObject>(Globals.Json.SelectToken(editedPath).ToString(), expConverter);
+
+                    var serializer = new YamlDotNet.Serialization.Serializer();
+                    string yaml = serializer.Serialize(deserializedObject);
+                    fastColoredTextBox1.Text = yaml;
+                    return;
+                case 2: // JSON
+                    var jsonString = Globals.Json.SelectToken(editedPath).ToString().Replace("\"", "\\\"").Replace("\r\n", "");
+                    webView2.ExecuteScriptAsync("setJSON(\"" + jsonString + "\");");
+                    return;
             }
         }
     }
