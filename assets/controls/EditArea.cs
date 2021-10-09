@@ -26,7 +26,6 @@ namespace MysteryMaker
 
             JObject jO = token.ToObject<JObject>();
 
-
             if (jO.Property("type") != null)
             {
                 reset();

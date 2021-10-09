@@ -142,7 +142,7 @@
             this.Controls.Add(this.fastColoredTextBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ScriptEdit";
-            this.Text = "Velius-Script";
+            this.Text = "Script";
             ((System.ComponentModel.ISupportInitialize)(this.fastColoredTextBox1)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

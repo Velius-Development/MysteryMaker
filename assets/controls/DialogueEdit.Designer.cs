@@ -52,6 +52,8 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -139,6 +141,8 @@
             // panel1
             // 
             this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.textBox4);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.label3);
@@ -166,8 +170,9 @@
             // 
             this.button3.Location = new System.Drawing.Point(184, 262);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(160, 31);
+            this.button3.Size = new System.Drawing.Size(165, 31);
             this.button3.TabIndex = 38;
+            this.button3.Tag = "option-specific";
             this.button3.Text = "Choose Image";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -176,9 +181,10 @@
             // 
             this.button2.Location = new System.Drawing.Point(184, 225);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(160, 31);
+            this.button2.Size = new System.Drawing.Size(147, 31);
             this.button2.TabIndex = 37;
-            this.button2.Text = "Velius-Script";
+            this.button2.Tag = "option-specific";
+            this.button2.Text = "Script";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -187,9 +193,10 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(184, 296);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(130, 22);
+            this.label3.Size = new System.Drawing.Size(120, 22);
             this.label3.TabIndex = 35;
-            this.label3.Text = "Beschreibung";
+            this.label3.Tag = "option-specific";
+            this.label3.Text = "Description";
             // 
             // label9
             // 
@@ -198,7 +205,8 @@
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(60, 22);
             this.label9.TabIndex = 33;
-            this.label9.Text = "Titel";
+            this.label9.Tag = "option-specific";
+            this.label9.Text = "Title";
             // 
             // textBox5
             // 
@@ -208,8 +216,9 @@
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
             this.textBox5.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox5.Size = new System.Drawing.Size(165, 96);
+            this.textBox5.Size = new System.Drawing.Size(165, 72);
             this.textBox5.TabIndex = 32;
+            this.textBox5.Tag = "option-specific";
             this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // textBox3
@@ -218,6 +227,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(165, 30);
             this.textBox3.TabIndex = 31;
+            this.textBox3.Tag = "option-specific";
             this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // button1
@@ -282,6 +292,29 @@
             this.removeToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.removeToolStripMenuItem.Text = "Remove";
             // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Go to:",
+            "Script"});
+            this.comboBox1.Location = new System.Drawing.Point(184, 225);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(165, 30);
+            this.comboBox1.TabIndex = 39;
+            this.comboBox1.Tag = "option-specific";
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(300, 225);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(49, 30);
+            this.textBox4.TabIndex = 40;
+            this.textBox4.Tag = "option-specific";
+            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            // 
             // DialogueEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -323,5 +356,7 @@
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox textBox4;
     }
 }

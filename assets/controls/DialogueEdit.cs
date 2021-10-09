@@ -33,6 +33,17 @@ namespace MysteryMaker
             {
                 listBox1.Items.Add(o.Value["title"].ToString());
             }
+
+            comboBox1.SelectedIndex = 0;
+
+            // Disable all option-specific elements
+            foreach (Control c in panel1.Controls)
+            {
+                if (c.Tag == "option-specific")
+                {
+                    c.Enabled = false;
+                }
+            }
         }
         private string getValue(string propName)
         {
@@ -70,12 +81,35 @@ namespace MysteryMaker
                 var name = Globals.Json.SelectToken(path + ".choices." + (listBox1.SelectedIndex + 1) + ".title").Value<string>();
                 var desc = Globals.Json.SelectToken(path + ".choices." + (listBox1.SelectedIndex + 1) + ".description").Value<string>();
                 var img = Utility.get_file_name_no_extension(Globals.Json.SelectToken(path + ".choices." + (listBox1.SelectedIndex + 1) + ".image").Value<string>());
+                var action = Globals.Json.SelectToken(path + ".choices." + (listBox1.SelectedIndex + 1) + ".action").Value<string>();
                 textBox5.Text = desc;
+                textBox4.Text = action.Replace("->", "");
                 textBox3.Text = name;
                 if (img != "")
                     button3.Text = img;
                 else
                     button3.Text = "Choose image";
+
+                // Enable all option-specific elements
+                foreach (Control c in panel1.Controls)
+                {
+                    if (c.Tag == "option-specific")
+                    {
+                        c.Enabled = true;
+                    }
+                }
+
+            }
+            else
+            {
+                // Disable all option-specific elements
+                foreach (Control c in panel1.Controls)
+                {
+                    if (c.Tag == "option-specific")
+                    {
+                        c.Enabled = false;
+                    }
+                }
             }
         }
 
@@ -190,6 +224,29 @@ namespace MysteryMaker
             button1.Text = Utility.get_file_name_no_extension(openFileDialog1.FileName);
 
             setValue("image", openFileDialog1.FileName.Replace(Globals.jHandler.filedirpath, "").Replace("\\", "/").Trim('/'));  // If possible, save with local path
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch(comboBox1.SelectedIndex)
+            {
+                case 0:
+                    button2.Hide();
+                    textBox4.Show();
+                    comboBox1.Size = new Size(110, 30);
+                    break;
+                case 1:
+                    button2.Show();
+                    textBox4.Hide();
+                    comboBox1.Size = new Size(165, 30);
+                    button2.BringToFront();
+                    break;
+            }
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+            Globals.Json.SelectToken(path)["choices"][(listBox1.SelectedIndex + 1).ToString()]["action"] = textBox4.Text;
         }
     }
 }
