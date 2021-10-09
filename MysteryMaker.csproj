@@ -429,6 +429,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
+    <Compile Include="assets\codes\TextStyles.cs" />
     <None Include="assets\json\pattern.json" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />

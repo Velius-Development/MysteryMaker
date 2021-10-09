@@ -18,6 +18,7 @@ using NJsonSchema.Yaml;
 using Newtonsoft.Json.Converters;
 using System.Dynamic;
 using YamlDotNet.Serialization;
+using MysteryMaker.assets.codes;
 
 namespace MysteryMaker
 {
@@ -26,6 +27,7 @@ namespace MysteryMaker
         public bool isVisible = false;
 
         public string editedPath = "";
+        private bool canSave = true;
 
         public FormMain()
         {
@@ -243,6 +245,9 @@ namespace MysteryMaker
 
         public async Task saveRecentFileAsync(bool locally = false)
         {
+            if (!canSave)
+                MessageBox.Show("Project can't be saved with errors!");
+
             await webView2.ExecuteScriptAsync("getJSON();");
 
             if (Globals.editingCloudFile &! locally)
@@ -693,15 +698,42 @@ namespace MysteryMaker
         {
             if (fastColoredTextBox1.Text.Length == 0)
                 return;
-            var deserializer = new Deserializer();
-            var yamlObject = deserializer.Deserialize<dynamic>(fastColoredTextBox1.Text);
 
-            var js = new JsonSerializer();
+            // Coloring
+            fastColoredTextBox1.ClearStyle(FastColoredTextBoxNS.StyleIndex.All);
+            fastColoredTextBox1.Range.SetStyle(TextStyles.s1, @"\b(" + "~|true|false|on|off" + @")\b", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+            fastColoredTextBox1.Range.SetStyle(TextStyles.s4, "'(.*?)'");
+            fastColoredTextBox1.Range.SetStyle(TextStyles.s2, "[a-zA-Z0-9\"_-]+?(?=:)");
+            fastColoredTextBox1.Range.SetStyle(TextStyles.s6, "[0-9\\.]+");
 
-            var w = new StringWriter();
-            js.Serialize(w, yamlObject);
-            string jsonText = w.ToString();
-            Globals.Json.SelectToken(editedPath).Replace(JObject.Parse(jsonText));
+            try
+            {
+                var deserializer = new Deserializer();
+                var yamlObject = deserializer.Deserialize<dynamic>(fastColoredTextBox1.Text);
+
+                var js = new JsonSerializer();
+
+                var w = new StringWriter();
+                js.Serialize(w, yamlObject);
+                string jsonText = w.ToString();
+                Globals.Json.SelectToken(editedPath).Replace(JObject.Parse(jsonText));
+
+                label1.Hide();
+                canSave = true;
+            }
+            catch (Exception ex)
+            {
+                if (!(ex is YamlDotNet.Core.SemanticErrorException) && !(ex is YamlDotNet.Core.SyntaxErrorException))
+                    return;
+
+                fastColoredTextBox1.GetLine(e.ChangedRange.ToLine).ClearStyle();
+                fastColoredTextBox1.GetLine(e.ChangedRange.ToLine).SetStyle(TextStyles.error);
+
+                label1.Text = ex.Message;
+                label1.Show();
+
+                canSave = false;
+            }
         }
 
         private void webView2_WebMessageReceived(object sender, Microsoft.Web.WebView2.Core.CoreWebView2WebMessageReceivedEventArgs e)

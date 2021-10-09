@@ -1,4 +1,5 @@
 ﻿using FastColoredTextBoxNS;
+using MysteryMaker.assets.codes;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -9,12 +10,6 @@ namespace MysteryMaker.assets.forms
     public partial class ScriptEdit : Form
     {
         private string path;
-
-        TextStyle s1 = new TextStyle(Brushes.DarkOrange, null, FontStyle.Bold);
-        private TextStyle s2 = new TextStyle(Brushes.DarkBlue, null, FontStyle.Bold);
-        private TextStyle s3 = new TextStyle(Brushes.DarkOliveGreen, null, FontStyle.Bold);
-        private TextStyle s4 = new TextStyle(Brushes.Orange, null, FontStyle.Bold);
-        private TextStyle s5 = new TextStyle(Brushes.Green, null, FontStyle.Regular);
 
         private AutocompleteMenu autoCompleteMenu;
 
@@ -49,13 +44,13 @@ namespace MysteryMaker.assets.forms
                 Globals.Json.SelectToken(path)["action"] = fastColoredTextBox1.Text;
             }
 
-            e.ChangedRange.ClearStyle(s1, s2, s3, s4, s5);
-            e.ChangedRange.SetStyle(s1, "<.*?>");
-            e.ChangedRange.SetStyle(s2, @"\b(" + string.Join("|", keywords) + @")\b", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
-            e.ChangedRange.SetStyle(s2, @"(\-\>)");
-            e.ChangedRange.SetStyle(s3, "\".*?\"");
-            e.ChangedRange.SetStyle(s4, "[0-9]");
-            e.ChangedRange.SetStyle(s5, @"\#(.*)");
+            e.ChangedRange.ClearStyle(TextStyles.s1, TextStyles.s2, TextStyles.s3, TextStyles.s4, TextStyles.s5);
+            e.ChangedRange.SetStyle(TextStyles.s1, "<.*?>");
+            e.ChangedRange.SetStyle(TextStyles.s2, @"\b(" + string.Join("|", keywords) + @")\b", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+            e.ChangedRange.SetStyle(TextStyles.s2, @"(\-\>)");
+            e.ChangedRange.SetStyle(TextStyles.s3, "\".*?\"");
+            e.ChangedRange.SetStyle(TextStyles.s4, "[0-9]");
+            e.ChangedRange.SetStyle(TextStyles.s5, @"\#(.*)");
         }
 
         private void fastColoredTextBox1_KeyDown(object sender, KeyEventArgs e)

@@ -90,6 +90,14 @@ namespace MysteryMaker
                 else
                     button3.Text = "Choose image";
 
+                if (Globals.Json.SelectToken(path + ".choices." + (listBox1.SelectedIndex + 1) + ".action") != null)
+                {
+                    if (Globals.Json.SelectToken(path + ".choices." + (listBox1.SelectedIndex + 1) + ".action").Value<string>().StartsWith("->"))
+                        comboBox1.SelectedIndex = 0;
+                    else
+                        comboBox1.SelectedIndex = 1;
+                }
+
                 // Enable all option-specific elements
                 foreach (Control c in panel1.Controls)
                 {
@@ -246,7 +254,7 @@ namespace MysteryMaker
 
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
-            Globals.Json.SelectToken(path)["choices"][(listBox1.SelectedIndex + 1).ToString()]["action"] = textBox4.Text;
+            Globals.Json.SelectToken(path)["choices"][(listBox1.SelectedIndex + 1).ToString()]["action"] = "->" + textBox4.Text;
         }
     }
 }
