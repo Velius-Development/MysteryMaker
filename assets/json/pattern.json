@@ -2,7 +2,8 @@
     "root": {
         "name": "Unnamed",
         "type": "MM-project",
-        "author": ""
+        "author": "",
+        "description":  ""
     },
     "chapter": {
         "type": "chapter",

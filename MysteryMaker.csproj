@@ -29,7 +29,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>34</ApplicationRevision>
+    <ApplicationRevision>35</ApplicationRevision>
     <ApplicationVersion>1.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -259,6 +259,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="assets\codes\Utility.cs" />
+    <Compile Include="assets\controls\ProjectEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="assets\controls\ProjectEdit.Designer.cs">
+      <DependentUpon>ProjectEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="assets\controls\DialogueEdit.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -366,6 +372,9 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="assets\codes\Updater.cs" />
+    <EmbeddedResource Include="assets\controls\ProjectEdit.resx">
+      <DependentUpon>ProjectEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="assets\controls\DialogueEdit.resx">
       <DependentUpon>DialogueEdit.cs</DependentUpon>
     </EmbeddedResource>

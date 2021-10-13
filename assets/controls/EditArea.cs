@@ -21,8 +21,14 @@ namespace MysteryMaker
 
             var token = Globals.Json.SelectToken(path);
 
-            if (token == null)
+            if (path == "")
+            {
+                ProjectEdit p = new ProjectEdit();
+                this.Controls.Add(p);
+                p.Dock = DockStyle.Fill;
+                this.Controls.SetChildIndex(lv, -1);
                 return;
+            }
 
             JObject jO = token.ToObject<JObject>();
 
