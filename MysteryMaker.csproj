@@ -59,11 +59,10 @@
     <StartupObject>MysteryMaker.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>5E3D28C781EC7F992FA7D3822E45571058AA83FF</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>92D34D427E891455EC4DE86E51E66E2D81F11F86</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>
-    </ManifestKeyFile>
+    <ManifestKeyFile>MysteryMaker_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -431,6 +430,7 @@
     <None Include="app.config" />
     <Compile Include="assets\codes\TextStyles.cs" />
     <None Include="assets\json\pattern.json" />
+    <None Include="MysteryMaker_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">

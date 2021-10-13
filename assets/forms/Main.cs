@@ -344,9 +344,20 @@ namespace MysteryMaker
         {
             // GUI
             editedPath = getNodeNamePath(treeView_Chpters.SelectedNode);
+            editArea.reset();
             editArea.load(editedPath);
 
-            var newJson = Globals.Json.SelectToken(editedPath).ToString();
+            var newJson = "";
+            if (editedPath.Length == 0)
+            {
+                newJson = Globals.Json.ToString();
+                editedPath = "";
+            }
+            else
+            {
+                newJson = Globals.Json.SelectToken(editedPath).ToString();
+            }
+
 
             // YAML
             var expConverter = new ExpandoObjectConverter();
@@ -364,6 +375,9 @@ namespace MysteryMaker
 
         private string getNodeNamePath(TreeNode node)
         {
+            if (node == null)
+                return "";
+
             int parentCount = node.FullPath.Count(x => x == '\\');
             List<string> pathList = new List<string>();
 
@@ -422,6 +436,8 @@ namespace MysteryMaker
             {
                 treeView_Chpters.SelectedNode = null;
                 editArea.reset();
+                editedPath = "";
+
                 if (e.Button == MouseButtons.Right)
                 {
                     contextMenuStrip1.Items[1].Enabled = false;
@@ -459,6 +475,9 @@ namespace MysteryMaker
                     contextMenuStrip1.Items[0].Enabled = false;
                 }
             }
+
+            treeView_Chpters_AfterSelect(null, null);
+
         }
 
         private void contextMenuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
