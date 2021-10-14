@@ -83,8 +83,9 @@ namespace MysteryMaker
                 var img = Utility.get_file_name_no_extension(Globals.Json.SelectToken(path + ".choices." + (listBox1.SelectedIndex + 1) + ".image").Value<string>());
                 var action = Globals.Json.SelectToken(path + ".choices." + (listBox1.SelectedIndex + 1) + ".action").Value<string>();
                 textBox5.Text = desc;
-                textBox4.Text = action.Replace("->", "");
                 textBox3.Text = name;
+                if (action.StartsWith("->"))
+                    textBox4.Text = action.Replace("->", "");
                 if (img != "")
                     button3.Text = img;
                 else
@@ -254,6 +255,7 @@ namespace MysteryMaker
 
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
+            MessageBox.Show("asd");
             Globals.Json.SelectToken(path)["choices"][(listBox1.SelectedIndex + 1).ToString()]["action"] = "->" + textBox4.Text;
         }
     }
