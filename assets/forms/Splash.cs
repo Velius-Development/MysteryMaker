@@ -18,6 +18,7 @@ namespace MysteryMaker.assets.forms
         public Splash()
         {
             InitializeComponent();
+            Updater.splashForm = this;
         }
 
         private void Splash_Load(object sender, EventArgs e)
@@ -37,7 +38,9 @@ namespace MysteryMaker.assets.forms
 
 
                 setStatus("Checking for updates...");
+                
                 Globals.addToLogs(new Updater().CheckForUpdates());
+
 
                 setStatus("Checking Temp-path's existance...");
 

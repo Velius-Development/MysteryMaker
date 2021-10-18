@@ -163,7 +163,8 @@ namespace MysteryMaker.Properties {
         ///    &quot;root&quot;: {
         ///        &quot;name&quot;: &quot;Unnamed&quot;,
         ///        &quot;type&quot;: &quot;MM-project&quot;,
-        ///        &quot;author&quot;: &quot;&quot;
+        ///        &quot;author&quot;: &quot;&quot;,
+        ///        &quot;description&quot;:  &quot;&quot;
         ///    },
         ///    &quot;chapter&quot;: {
         ///        &quot;type&quot;: &quot;chapter&quot;,
@@ -180,9 +181,7 @@ namespace MysteryMaker.Properties {
         ///        &quot;tellerName&quot;: &quot;&quot;,
         ///        &quot;image&quot;: &quot;&quot;,
         ///        &quot;text&quot;: &quot;&quot;,
-        ///        &quot;choices&quot;: {}
-        ///    },
-        ///    &quot;card&quot;: {        /// [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        ///        &quot;choices [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
         /// </summary>
         internal static string pattern {
             get {

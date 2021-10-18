@@ -10,6 +10,7 @@ using System.Windows;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace MysteryMaker
 {
@@ -212,15 +213,20 @@ namespace MysteryMaker
         }
 
         public static void addToLogs(string status)
-        {
-            if(formMain != null) { 
-                formMain.setStatusLabel(status);
-            }
-            logs += "[" + System.DateTime.Now.TimeOfDay.ToString().Split('.')[0] + "] | " + status + "\r\n";
-            if (formLog != null)
-            {
-                formLog.refresh();
-            }
+        {   
+            // Allow cross-threading
+            formMain.BeginInvoke((MethodInvoker)delegate () {
+                if (formMain != null)
+                {
+                    formMain.setStatusLabel(status);
+                }
+                logs += "[" + System.DateTime.Now.TimeOfDay.ToString().Split('.')[0] + "] | " + status + "\r\n";
+                if (formLog != null)
+                {
+                    formLog.refresh();
+                }
+            ; ;
+            });
         }
 
         public static void Rename(this JToken token, string newName)

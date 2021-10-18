@@ -58,15 +58,15 @@
         '\"',
         '\'',
         '\''};
-            this.fastColoredTextBox1.AutoScrollMinSize = new System.Drawing.Size(305, 27);
+            this.fastColoredTextBox1.AutoScrollMinSize = new System.Drawing.Size(284, 28);
             this.fastColoredTextBox1.BackBrush = null;
-            this.fastColoredTextBox1.CharHeight = 27;
-            this.fastColoredTextBox1.CharWidth = 14;
+            this.fastColoredTextBox1.CharHeight = 28;
+            this.fastColoredTextBox1.CharWidth = 13;
             this.fastColoredTextBox1.CommentPrefix = "#";
             this.fastColoredTextBox1.CurrentLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
             this.fastColoredTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.fastColoredTextBox1.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.fastColoredTextBox1.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold);
+            this.fastColoredTextBox1.Font = new System.Drawing.Font("Consolas", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fastColoredTextBox1.IsReplaceMode = false;
             this.fastColoredTextBox1.Location = new System.Drawing.Point(0, 25);
             this.fastColoredTextBox1.Name = "fastColoredTextBox1";

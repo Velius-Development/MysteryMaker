@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Deployment.Application;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace MysteryMaker
@@ -7,29 +9,31 @@ namespace MysteryMaker
     {
         public static assets.forms.Splash splashForm;
 
+
+        public static ApplicationDeployment currentDeployment = ApplicationDeployment.CurrentDeployment;
+
+
         public String CheckForUpdates()
         {
-            Globals.addToLogs("Prüfe auf Updates...");
-            if (!System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed)
+            Globals.addToLogs("Check for Updates...");
+            if (!ApplicationDeployment.IsNetworkDeployed)
             {
-                return "Fehler beim Updaten: DebugMode ist aktiviert.";
+                return "Error while updating: Debug mode is active.";
             }
 
-            var currentDeployment = System.Deployment.Application.ApplicationDeployment.CurrentDeployment;
-
-            System.Deployment.Application.UpdateCheckInfo info;
+            UpdateCheckInfo info;
             try
             {
                 info = currentDeployment.CheckForDetailedUpdate();
             }
             catch (Exception)
             {
-                return "Fehler beim Updaten: Update-Infos konnten nicht geladen werden. Überprüfen sie ihre Internetverbindung.";
+                return "Error while updating: Update information could not be load. Check you internet connection.";
             }
 
             if (!info.UpdateAvailable)
             {
-                return "Bereits auf dem neusten Stand.";
+                return "Already up to date.";
             }
 
             if (splashForm != null)
@@ -38,12 +42,14 @@ namespace MysteryMaker
             Properties.Settings.Default.seenUpdateLog = false;
             Properties.Settings.Default.Save();
 
-            MessageBox.Show("Eine neue Version ist erschienen! Der Client wird nun auf die Version " + info.AvailableVersion + " aktualisiert.", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+            MessageBox.Show("A new version is available! MysteryMaker will be updated to version: " + info.AvailableVersion, "Update", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
 
 
             currentDeployment.Update();
-            Application.Restart();
-            return "Erfolgreich aktualisiert!";
+
+            MessageBox.Show("Update was installed successfully. Please restart MysteryMaker for the changes to take effect.", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+
+            return "Updated!";
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -35,7 +36,7 @@ namespace MysteryMaker
 
             if (!openFileDialog1.FileName.StartsWith(Globals.jHandler.filedirpath))
             {
-                var r = MessageBox.Show("The chosen file has to be inside the project folder!", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                var r = MessageBox.Show("The chosen file has to be inside the project folder!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 return null;
             }
@@ -77,5 +78,17 @@ namespace MysteryMaker
                 }
         }
 
-     }
+        public static T[] ConcatArrays<T>(params T[][] list)
+        {
+            var result = new T[list.Sum(a => a.Length)];
+            int offset = 0;
+            for (int x = 0; x < list.Length; x++)
+            {
+                list[x].CopyTo(result, offset);
+                offset += list[x].Length;
+            }
+            return result;
+        }
+
+    }
 }

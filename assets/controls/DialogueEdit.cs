@@ -93,7 +93,7 @@ namespace MysteryMaker
 
                 if (Globals.Json.SelectToken(path + ".choices." + (listBox1.SelectedIndex + 1) + ".action") != null)
                 {
-                    if (Globals.Json.SelectToken(path + ".choices." + (listBox1.SelectedIndex + 1) + ".action").Value<string>().StartsWith("->"))
+                    if (Globals.Json.SelectToken(path + ".choices." + (listBox1.SelectedIndex + 1) + ".action").Value<string>().StartsWith("->") || Globals.Json.SelectToken(path + ".choices." + (listBox1.SelectedIndex + 1) + ".action").Value<string>().Length == 0)
                         comboBox1.SelectedIndex = 0;
                     else
                         comboBox1.SelectedIndex = 1;
@@ -255,7 +255,6 @@ namespace MysteryMaker
 
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
-            MessageBox.Show("asd");
             Globals.Json.SelectToken(path)["choices"][(listBox1.SelectedIndex + 1).ToString()]["action"] = "->" + textBox4.Text;
         }
     }

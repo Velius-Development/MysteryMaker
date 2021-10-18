@@ -61,6 +61,7 @@
             this.webView2 = new Microsoft.Web.WebView2.WinForms.WebView2();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel_status = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -99,7 +100,7 @@
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0);
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolStrip1.ShowItemToolTips = false;
-            this.toolStrip1.Size = new System.Drawing.Size(1034, 26);
+            this.toolStrip1.Size = new System.Drawing.Size(1044, 26);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -245,7 +246,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.groupBox1.Size = new System.Drawing.Size(200, 501);
+            this.groupBox1.Size = new System.Drawing.Size(200, 507);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Chapters";
@@ -261,7 +262,7 @@
             this.treeView_Chpters.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.treeView_Chpters.Name = "treeView_Chpters";
             this.treeView_Chpters.SelectedImageIndex = 0;
-            this.treeView_Chpters.Size = new System.Drawing.Size(179, 465);
+            this.treeView_Chpters.Size = new System.Drawing.Size(179, 471);
             this.treeView_Chpters.TabIndex = 0;
             this.treeView_Chpters.BeforeCollapse += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView_Chpters_BeforeCollapse);
             this.treeView_Chpters.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView_Chpters_BeforeExpand);
@@ -291,7 +292,7 @@
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.Control;
             this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainer1.Size = new System.Drawing.Size(1034, 529);
+            this.splitContainer1.Size = new System.Drawing.Size(1044, 535);
             this.splitContainer1.SplitterDistance = 207;
             this.splitContainer1.SplitterWidth = 6;
             this.splitContainer1.TabIndex = 5;
@@ -306,7 +307,7 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.groupBox2.Size = new System.Drawing.Size(729, 501);
+            this.groupBox2.Size = new System.Drawing.Size(819, 507);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Edit";
@@ -321,7 +322,7 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(721, 476);
+            this.tabControl1.Size = new System.Drawing.Size(811, 482);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
@@ -332,7 +333,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 27);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(713, 445);
+            this.tabPage1.Size = new System.Drawing.Size(803, 451);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "GUI";
             // 
@@ -345,7 +346,7 @@
             this.editArea.Margin = new System.Windows.Forms.Padding(0);
             this.editArea.MinimumSize = new System.Drawing.Size(740, 430);
             this.editArea.Name = "editArea";
-            this.editArea.Size = new System.Drawing.Size(740, 445);
+            this.editArea.Size = new System.Drawing.Size(803, 451);
             this.editArea.TabIndex = 0;
             // 
             // tabPage2
@@ -357,7 +358,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(713, 456);
+            this.tabPage2.Size = new System.Drawing.Size(803, 462);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "YAML";
             // 
@@ -397,7 +398,6 @@
             this.fastColoredTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.fastColoredTextBox1.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.fastColoredTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fastColoredTextBox1.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.fastColoredTextBox1.IndentBackColor = System.Drawing.SystemColors.Control;
             this.fastColoredTextBox1.IsReplaceMode = false;
             this.fastColoredTextBox1.Location = new System.Drawing.Point(0, 0);
@@ -406,7 +406,7 @@
             this.fastColoredTextBox1.Paddings = new System.Windows.Forms.Padding(0);
             this.fastColoredTextBox1.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
             this.fastColoredTextBox1.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("fastColoredTextBox1.ServiceColors")));
-            this.fastColoredTextBox1.Size = new System.Drawing.Size(709, 452);
+            this.fastColoredTextBox1.Size = new System.Drawing.Size(799, 458);
             this.fastColoredTextBox1.TabIndex = 0;
             this.fastColoredTextBox1.Zoom = 100;
             this.fastColoredTextBox1.TextChanged += new System.EventHandler<FastColoredTextBoxNS.TextChangedEventArgs>(this.fastColoredTextBox1_TextChanged);
@@ -416,7 +416,7 @@
             this.tabPage3.Controls.Add(this.webView2);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(713, 456);
+            this.tabPage3.Size = new System.Drawing.Size(803, 462);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "JSON";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -427,7 +427,7 @@
             this.webView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.webView2.Location = new System.Drawing.Point(0, 0);
             this.webView2.Name = "webView2";
-            this.webView2.Size = new System.Drawing.Size(713, 456);
+            this.webView2.Size = new System.Drawing.Size(803, 462);
             this.webView2.TabIndex = 0;
             this.webView2.ZoomFactor = 1D;
             this.webView2.WebMessageReceived += new System.EventHandler<Microsoft.Web.WebView2.Core.CoreWebView2WebMessageReceivedEventArgs>(this.webView2_WebMessageReceived);
@@ -435,18 +435,28 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel_status});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 533);
+            this.toolStripStatusLabel_status,
+            this.toolStripProgressBar1});
+            this.statusStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.statusStrip1.Location = new System.Drawing.Point(0, 539);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1034, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1044, 22);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel_status
             // 
             this.toolStripStatusLabel_status.Name = "toolStripStatusLabel_status";
-            this.toolStripStatusLabel_status.Size = new System.Drawing.Size(83, 17);
-            this.toolStripStatusLabel_status.Text = "Ungespeichert";
+            this.toolStripStatusLabel_status.Size = new System.Drawing.Size(52, 17);
+            this.toolStripStatusLabel_status.Text = "Unsaved";
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripProgressBar1.AutoToolTip = true;
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
+            this.toolStripProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             // 
             // openFileDialog1
             // 
@@ -485,7 +495,7 @@
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.button1.Location = new System.Drawing.Point(487, 0);
+            this.button1.Location = new System.Drawing.Point(492, 0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 25);
             this.button1.TabIndex = 7;
@@ -504,7 +514,7 @@
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1034, 555);
+            this.ClientSize = new System.Drawing.Size(1044, 561);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.splitContainer1);
@@ -512,7 +522,7 @@
             this.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.MinimumSize = new System.Drawing.Size(1050, 550);
+            this.MinimumSize = new System.Drawing.Size(1060, 600);
             this.Name = "FormMain";
             this.Opacity = 0D;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
@@ -582,5 +592,6 @@
         private System.Windows.Forms.TabPage tabPage3;
         private Microsoft.Web.WebView2.WinForms.WebView2 webView2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
     }
 }

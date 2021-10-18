@@ -599,7 +599,7 @@ namespace MysteryMaker
 
         private async void button1_Click(object sender, EventArgs e)
         {
-
+            toolStripProgressBar1.Value = 99;
 
             if (!File.Exists(Globals.jHandler.filepath))
             {
@@ -642,6 +642,7 @@ namespace MysteryMaker
                     Globals.addToLogs(ex.Message);
                 }
             }
+            toolStripProgressBar1.Value = 0;
         }
 
         async Task readOutput(Process process)
