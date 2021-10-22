@@ -369,7 +369,7 @@ namespace MysteryMaker
 
 
             // JSON
-            newJson = newJson.Replace("\"", "\\\"").Replace("\r\n", "");
+            newJson = newJson.Replace("\"", "\\\"");
             webView2.ExecuteScriptAsync("setJSON(\"" + newJson + "\");");
         }
 

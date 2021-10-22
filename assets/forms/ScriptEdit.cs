@@ -62,7 +62,7 @@ PoolVector3Array,PoolColorArray".Replace(@"\n", "").Split(',');
         {
             if (path != null)
             {
-                Globals.Json.SelectToken(path)["action"] = fastColoredTextBox1.Text;
+                Globals.Json.SelectToken(path)["action"] = fastColoredTextBox1.Text.Replace("\r\n", "\n");
             }
 
             e.ChangedRange.ClearStyle(TextStyles.s1, TextStyles.s2, TextStyles.s3, TextStyles.s4, TextStyles.s5, TextStyles.s6);
