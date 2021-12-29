@@ -10,8 +10,16 @@ namespace MysteryMaker
         public static assets.forms.Splash splashForm;
 
 
-        public static ApplicationDeployment currentDeployment = ApplicationDeployment.CurrentDeployment;
+        public static ApplicationDeployment currentDeployment;
 
+
+        public Updater()
+        {
+            if (ApplicationDeployment.IsNetworkDeployed)
+            {
+                currentDeployment = ApplicationDeployment.CurrentDeployment;
+            }
+        }
 
         public String CheckForUpdates()
         {
