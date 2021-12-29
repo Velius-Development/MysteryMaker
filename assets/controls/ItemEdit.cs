@@ -12,11 +12,11 @@ using System.Threading;
 
 namespace MysteryMaker
 {
-    public partial class CardEdit : UserControl
+    public partial class ItemEdit : UserControl
     {
         string path;
 
-        public CardEdit(string _path)
+        public ItemEdit(string _path)
         {
             InitializeComponent();
             path = _path;

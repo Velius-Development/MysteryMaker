@@ -172,7 +172,7 @@ namespace MysteryMaker.Properties {
         ///        &quot;image&quot;: &quot;&quot;,
         ///        &quot;description&quot;: &quot;&quot;,
         ///        &quot;dialogues&quot;: {},
-        ///        &quot;cards&quot;: {},
+        ///        &quot;items&quot;: {},
         ///        &quot;locations&quot;: {}
         ///    },
         ///    &quot;dialogue&quot;: {

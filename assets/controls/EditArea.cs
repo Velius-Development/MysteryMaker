@@ -48,8 +48,8 @@ namespace MysteryMaker
                         this.Controls.Add(d);
                         d.Dock = DockStyle.Fill;
                         break;
-                    case "card":
-                        CardEdit c = new CardEdit(path);
+                    case "item":
+                        ItemEdit c = new ItemEdit(path);
                         this.Controls.Add(c);
                         c.Dock = DockStyle.Fill;
                         break;

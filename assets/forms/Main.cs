@@ -145,7 +145,7 @@ namespace MysteryMaker
                 {
                     foreach (TreeNode nnn in nn.Nodes)
                     {
-                        if (nnn.Nodes.Count == 0)                 //If dialogue, card or location entry
+                        if (nnn.Nodes.Count == 0)                 //If dialogue, item or location entry
                         {
                             nnn.ImageIndex = 2;                   //Set page icon
                             nnn.SelectedImageIndex = 2;
@@ -332,7 +332,7 @@ namespace MysteryMaker
             Globals.addToLogs("Save As " + fileName + "...");
             File.WriteAllText(fileName, Globals.Json.ToString());
             Globals.jHandler.load(fileName);
-            Globals.addToLogs("Successfully saved as " + fileName + " gespeichert!");
+            Globals.addToLogs("Successfully saved as " + fileName + "!");
         }
 
         private void speichernToolStripMenuItem_Click(object sender, EventArgs e)
@@ -459,7 +459,7 @@ namespace MysteryMaker
                             contextMenuStrip1.Items[1].Enabled = false;
                             contextMenuStrip1.Items[0].Enabled = true; 
                             break;
-                        case "cards":
+                        case "items":
                             contextMenuStrip1.Items[1].Enabled = false;
                             contextMenuStrip1.Items[0].Enabled = true;
                             break;
@@ -498,7 +498,7 @@ namespace MysteryMaker
                     switch (treeView_Chpters.SelectedNode.Name)
                     {
                         case "dialogues": Globals.jHandler.createDialogue(parentName); break;
-                        case "cards": Globals.jHandler.createCard(parentName); break;
+                        case "items": Globals.jHandler.createItem(parentName); break;
                         case "locations": Globals.jHandler.createLocation(parentName); break;
                     }
                 }
@@ -782,6 +782,27 @@ namespace MysteryMaker
                     webView2.ExecuteScriptAsync("setJSON(\"" + jsonString + "\");");
                     return;
             }
+        }
+
+        private async void exportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFileDialog2.FileName = Globals.Json.Value<string>("name") + ".zip";
+
+            var result = saveFileDialog2.ShowDialog(); if (result != DialogResult.OK) { return; }
+            var fileName = saveFileDialog2.FileName;
+            var dir = new FileInfo(fileName).DirectoryName;
+            var fileLoc = dir;
+
+            if (!Directory.Exists(fileLoc))
+            {
+                MessageBox.Show("The given path does not exist: " + fileLoc, "Error");
+                Globals.addToLogs("The given path does not exist: " + fileLoc);
+                return;
+            }
+
+            Globals.addToLogs("Exporting to " + fileName + "...");
+            await Globals.export(fileName);
+            Globals.addToLogs("Successfully saved as " + fileName + "!");
         }
     }
 

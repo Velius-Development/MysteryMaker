@@ -11,7 +11,7 @@
         "image": "",
         "description": "",
         "dialogues": {},
-        "cards": {},
+        "items": {},
         "locations": {}
     },
     "dialogue": {
@@ -22,9 +22,9 @@
         "text": "",
         "choices": {}
     },
-    "card": {
-        "type": "card",
-        "name": "New Card",
+    "item": {
+        "type": "item",
+        "name": "New Item",
         "image": "",
         "description": "",
         "stats": {}

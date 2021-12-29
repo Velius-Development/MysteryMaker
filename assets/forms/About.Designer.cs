@@ -56,7 +56,7 @@
             this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(364, 253);
             this.richTextBox1.TabIndex = 2;
-            this.richTextBox1.Text = "MysteryMaker for Velius-Engine\nV [VER]\n©2021\nTeam Mystery Heini\nAll rights reserv" +
+            this.richTextBox1.Text = "MysteryMaker for Velius Engine\nV [VER]\n©2022\nVelius Development\nAll rights reserv" +
     "ed.\n";
             // 
             // FormAbout
@@ -75,7 +75,7 @@
             this.Name = "FormAbout";
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = "FormAbout";
+            this.Text = "About";
             this.TransparencyKey = System.Drawing.Color.Fuchsia;
             this.Load += new System.EventHandler(this.About_Load);
             this.ResumeLayout(false);

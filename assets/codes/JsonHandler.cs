@@ -93,12 +93,12 @@ namespace MysteryMaker
             Globals.formMain.setComponents();
         }
 
-        public void createCard(string chapterID)
+        public void createItem(string chapterID)
         {
-            var cardsCount = Globals.Json[chapterID]["cards"].Count();
-            var newID = (cardsCount).ToString();
-            var obj = (JObject)Globals.Json[chapterID]["cards"];
-            obj.Add(newID, JToken.Parse(getPattern("card")));
+            var itemsCount = Globals.Json[chapterID]["items"].Count();
+            var newID = (itemsCount).ToString();
+            var obj = (JObject)Globals.Json[chapterID]["items"];
+            obj.Add(newID, JToken.Parse(getPattern("item")));
             Globals.formMain.setComponents();
         }
 
@@ -111,9 +111,9 @@ namespace MysteryMaker
             Globals.formMain.setComponents();
         }
 
-        public void createStat(string pathToCard)
+        public void createStat(string pathToItem)
         {
-            var p = pathToCard.Split('.');
+            var p = pathToItem.Split('.');
             var statsCount = Globals.Json[p[0]][p[1]][p[2]]["stats"].Count();
             var newID = (statsCount+1).ToString();
             var obj = (JObject)Globals.Json[p[0]][p[1]][p[2]]["stats"];

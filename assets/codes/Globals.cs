@@ -69,6 +69,12 @@ namespace MysteryMaker
 
         public static async Task updateDebug()
         {
+            var path = Path.GetTempPath() + "\\MysteryMaker\\debug.zip";
+            await export(path);
+        }
+
+        public static async Task export(String export_path)
+        {
             await Task.Run(async () =>
             {
                 await Task.Delay(10);
@@ -89,10 +95,10 @@ namespace MysteryMaker
 
                     // Fix import issues of theme
 
-                    var debug_dir = Path.GetTempPath() + "MysteryMaker\\debug\\";
+                    var tmp_dir = Path.GetTempPath() + "MysteryMaker\\tmp\\";
 
 
-                    System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(debug_dir);
+                    System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(tmp_dir);
                     if (dir.Exists)
                     {
                         Utility.setAttributesNormal(dir);
@@ -133,32 +139,32 @@ namespace MysteryMaker
                             
                             var final_text = String.Join("\n", new_lines);
 
-                            var final_p = debug_dir + path.Replace(jHandler.filedirpath, "");
+                            var final_p = tmp_dir + path.Replace(jHandler.filedirpath, "");
                             Directory.CreateDirectory(Path.GetDirectoryName(final_p));
                             File.WriteAllText(final_p, final_text);
                             continue;
                         }
 
-                        var final_p2 = debug_dir + path.Replace(jHandler.filedirpath, "");
+                        var final_p2 = tmp_dir + path.Replace(jHandler.filedirpath, "");
                         Directory.CreateDirectory(Path.GetDirectoryName(final_p2));
                         File.Copy(path, final_p2);
                     }
 
 
-                    foreach (String path in Directory.GetFiles(debug_dir))
+                    foreach (String path in Directory.GetFiles(tmp_dir))
                     {
                         zip.AddItem(path, "\\" + rnd);
                     }
 
-                    foreach (String path in Directory.GetDirectories(debug_dir))
+                    foreach (String path in Directory.GetDirectories(tmp_dir))
                     {
                         if (!path.EndsWith(".git"))
-                            zip.AddItem(path, rnd + "\\" + path.Replace(debug_dir, ""));
+                            zip.AddItem(path, rnd + "\\" + path.Replace(tmp_dir, ""));
                     }
 
-                    zip.Save(Path.GetTempPath() + "\\MysteryMaker\\debug.zip");
+                    zip.Save(export_path);
 
-                    dir = new System.IO.DirectoryInfo(debug_dir);
+                    dir = new System.IO.DirectoryInfo(tmp_dir);
                     if (dir.Exists)
                     {
                         Utility.setAttributesNormal(dir);
@@ -167,7 +173,7 @@ namespace MysteryMaker
 
                 }
             });
-        }
+        } 
 
         public static void connectSFTP()
         {

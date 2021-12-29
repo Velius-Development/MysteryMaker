@@ -271,11 +271,11 @@
     <Compile Include="assets\controls\DialogueEdit.Designer.cs">
       <DependentUpon>DialogueEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="assets\controls\CardEdit.cs">
+    <Compile Include="assets\controls\ItemEdit.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="assets\controls\CardEdit.Designer.cs">
-      <DependentUpon>CardEdit.cs</DependentUpon>
+    <Compile Include="assets\controls\ItemEdit.Designer.cs">
+      <DependentUpon>ItemEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="assets\controls\LocationEdit.cs">
       <SubType>UserControl</SubType>
@@ -378,8 +378,8 @@
     <EmbeddedResource Include="assets\controls\DialogueEdit.resx">
       <DependentUpon>DialogueEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="assets\controls\CardEdit.resx">
-      <DependentUpon>CardEdit.cs</DependentUpon>
+    <EmbeddedResource Include="assets\controls\ItemEdit.resx">
+      <DependentUpon>ItemEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="assets\controls\LocationEdit.resx">
       <DependentUpon>LocationEdit.cs</DependentUpon>
